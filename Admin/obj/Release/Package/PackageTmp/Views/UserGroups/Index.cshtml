@@ -1,0 +1,70 @@
+﻿@model IEnumerable<DbBackupEntities.UserGroup>
+@{
+    ViewBag.Title = "Index";
+}
+
+<br />
+<br />
+<div class="panel panel-default">
+    <div class="panel-heading clearfix">
+        <h4 class="panel-title pull-left"><b>Manage User Groups</b></h4>
+        <div>
+            @Html.ActionLink("Add Group", "Add", null, new { @class = "btn btn-default btn-primary pull-right" })
+        </div>
+    </div>
+    <div class="panel-body">
+        <table id="tblGroups" class="table table-hover responsive">
+            <thead>
+                <tr>
+                    <th>
+                        ID
+                    </th>
+                    <th>
+                        Group Name
+                    </th>
+                    <th>
+                        Status
+                    </th>
+                    <th>
+                        &nbsp;
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @item.GroupId
+                        </td>
+                        <td>
+                            @item.GroupName
+                        </td>
+                        <td>
+                            @(item.Active == true ? "Active" : "InActive")
+                        </td>
+                        <td>
+                            @Html.ActionLink("Edit", "Edit", new { id = @item.GroupId }) |
+                            @Html.ActionLink("Delete", "Delete", new { id = @item.GroupId }) |
+                            @Html.ActionLink("Assign Permission", "Permission", new { id = @item.GroupId })
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+@section Scripts {
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#tblGroups").DataTable({
+                responsive: true,
+                searching: true,
+                paging: true,
+                ordering: false,
+                info: false
+            });
+        });
+    </script>
+}

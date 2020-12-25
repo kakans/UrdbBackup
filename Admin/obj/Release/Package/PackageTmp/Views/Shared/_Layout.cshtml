@@ -1,0 +1,102 @@
+﻿@{
+    var identity = (System.Security.Claims.ClaimsIdentity)User.Identity;
+    var hasJobClaim = identity.HasClaim("DB_JOB_VIEW", "Y") 
+                        || identity.HasClaim("DB_JOB_CREATE", "Y") 
+                        || identity.HasClaim("DB_JOB_EDIT", "Y") 
+                        || identity.HasClaim("DB_JOB_DELETE", "Y") 
+                        || identity.HasClaim("DB_JOB_VIEW", "Y")
+                        || identity.HasClaim("DB_JOB_RUNNOW", "Y");
+    var hasDbLogClaim = identity.HasClaim("DB_LOGS_VIEW", "Y")
+                            || identity.HasClaim("DB_LOGS_DETAILS", "Y");
+    var hasDbBackupClaim = identity.HasClaim("DB_BACKUP_VIEW", "Y")
+                                || identity.HasClaim("DB_BACKUP_DETAILS", "Y")
+                                || identity.HasClaim("DB_BACKUP_DOWNLOAD", "Y");
+    var hasManageUserClaim = identity.HasClaim("DB_USER_VIEW", "Y")
+                                || identity.HasClaim("DB_USER_ADD", "Y")
+                                || identity.HasClaim("DB_USER_EDIT", "Y");
+    var hasUserGroupClaim = identity.HasClaim("DB_USER_GROUP_VIEW", "Y")
+                                || identity.HasClaim("DB_USER_GROUP_ADD", "Y")
+                                || identity.HasClaim("DB_USER_GROUP_EDIT", "Y")
+                                || identity.HasClaim("DB_USER_GROUP_DELETE", "Y")
+                                || identity.HasClaim("DB_USER_GROUP_ASSIGNPERMISSION", "Y");
+    var hasPermissionClaim = identity.HasClaim("DB_PERMISSIONS_VIEW", "Y")
+                                || identity.HasClaim("DB_PERMISSIONS_ADD", "Y")
+                                || identity.HasClaim("DB_PERMISSIONS_EDIT", "Y")
+                                || identity.HasClaim("DB_PERMISSIONS_DELETE", "Y");                                
+                                
+                        
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - SNK Database Backup</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink("UrSqlBackup", "Index", "Home", null, new { @class = "navbar-brand" })
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    @if (hasJobClaim) 
+                    { 
+                        <li>@Html.ActionLink("Jobs", "Index", "DbJobs")</li>
+                    }
+                    @if (hasDbLogClaim) 
+                    { 
+                        <li>@Html.ActionLink("Logs", "Index", "DbLogs")</li>
+                    }
+                    @if (hasDbBackupClaim)
+                    { 
+                        <li>@Html.ActionLink("Backup", "Index", "DbBackupFile")</li>
+                    }
+                    @if (hasManageUserClaim || hasUserGroupClaim || hasPermissionClaim)
+                    {
+                        <li class="nav-item dropdown">
+                            @Html.ActionLink("Manage Users", "Index", "ManageUsers",null, new { @class = "nav-link dropdown-toggle", @data_toggle="dropdown",@aria_haspopup="true", @aria_expanded="false" })
+                            <div class="dropdown-menu">
+                                @if (hasManageUserClaim)
+                                {
+                                    @Html.ActionLink("Users", "Index", "ManageUsers",null, new { @class = "dropdown-item" }) <br />
+                                }
+                                @if (hasUserGroupClaim)
+                                { 
+                                    @Html.ActionLink("Manage Users Group", "Index", "UserGroups",null, new { @class = "dropdown-item" })<br />
+                                }
+                                @if (hasPermissionClaim)
+                                {
+                                    @Html.ActionLink("Manage Permission", "Index", "Permission", null,new { @class = "dropdown-item" })
+                                }
+                            </div>
+                        </li>
+                    }
+                </ul>
+                @Html.Partial("_LoginPartial")
+            </div>
+        </div>
+    </div>
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - SNK Database Backup</p>
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/datatables")
+    
+    @RenderSection("scripts", required: false)
+</body>
+</html>

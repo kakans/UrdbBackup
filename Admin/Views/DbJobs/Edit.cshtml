@@ -1,0 +1,229 @@
+﻿@model DbBackupEntities.DbJobDetail
+@{
+    ViewBag.Title = "Edit";
+    var tableStyle = Model.FullDbBackup ? "display:none" : "display:block";
+}
+
+<br /><br />
+
+<div class="panel panel-default">
+    <div class="panel-heading"><h4>Edit Database Job</h4></div>
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-md-12">
+                @using (Html.BeginForm("Edit", "DbJobs", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+                {
+                    @Html.HiddenFor(m => m.JobId);
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.DbServerName, new { @class = "col-md-2 control-label" })
+                        <div class="col-md-4">
+                            @Html.TextBoxFor(m => m.DbServerName, new { @class = "form-control", @readonly = "readonly" })
+                            @Html.ValidationMessageFor(m => m.DbServerName)
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.DbName, new { @class = "col-md-2 control-label" })
+                        <div class="col-md-4">
+                            @Html.TextBoxFor(m => m.DbName, new { @class = "form-control", @readonly = "readonly" })
+                            @Html.ValidationMessageFor(m => m.DbName)
+                        </div>
+                        @Html.CheckBoxFor(m => m.FullDbBackup)
+                        @Html.LabelFor(m => m.FullDbBackup, new { @class = "col-md-2 control-label" })
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.DbUserName, new { @class = "col-md-2 control-label" })
+                        <div class="col-md-4">
+                            @Html.TextBoxFor(m => m.DbUserName, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(m => m.DbUserName)
+                        </div>
+                        @Html.LabelFor(m => m.DbPassword, new { @class = "col-md-2 control-label" })
+                        <div class="col-md-4">
+                            @Html.PasswordFor(m => m.DbPassword, new { value = @Model.DbPassword, @class = "form-control" })
+                            @Html.ValidationMessageFor(m => m.DbPassword)
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-2 col-md-offset-2">
+                            <input type="button" id="btnVerifyConnection" class="btn btn-primary" value="Verify Connection" />
+                        </div>
+                        <div class="col-md-2" id="loading" style="display:none;"><i>Please wait...</i></div>
+                        <div id="divConSuccess" class="alert alert-success col-md-2" style="display:none;">Connection Successful!!!</div>
+                        <div id="divConFailed" class="alert alert-danger col-md-2" style="display:none;">Connection Failed!!!</div>
+                    </div>
+                    <div class="form-group">
+                        <div id="divTableList" class="col-md-4 col-md-offset-2" style="@tableStyle">
+                            <div class="col-md-4 form-control" style="height:250px; overflow:auto; width:280px;">
+                                @foreach (var item in Model.TableList)
+                                {
+                                    @Html.CheckBoxFor(x => item.IsSelected, new { @value = item.TableName }) <i>&nbsp;</i>
+                                    @Html.DisplayTextFor(x => item.TableName)
+                                    <br />
+                                }
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <hr />
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.JobTitle, new { @class = "col-md-2 control-label" })
+                        <div class="col-md-4">
+                            @Html.TextBoxFor(m => m.JobTitle, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(m => m.JobTitle)
+                        </div>
+
+                        @Html.LabelFor(m => m.FrequencyInHrs, new { @class = "col-md-2 control-label" })
+                        <div class="col-md-4">
+                            @Html.TextBoxFor(m => m.FrequencyInHrs, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(m => m.FrequencyInHrs)
+                        </div>
+                    </div>
+                    @*<div class="form-group">
+                        @Html.LabelFor(m => m.LastRun, new { @class = "col-md-2 control-label" })
+                        <div class="col-md-4">
+                            @Html.TextBoxFor(m => m.LastRun, "{0:MM/dd/yyyy hh:mm:ss tt}", new { @class = "form-control" })
+                            @Html.ValidationMessageFor(m => m.LastRun)
+                        </div>
+
+                        @Html.LabelFor(m => m.NextRun, new { @class = "col-md-2 control-label" })
+                        <div class="col-md-4">
+                            @Html.TextBoxFor(m => m.NextRun,"{0:MM/dd/yyyy hh:mm:ss tt}", new { @class = "form-control" })
+                            @Html.ValidationMessageFor(m => m.NextRun)
+                        </div>
+                    </div>*@
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.DirForBackup, new { @class = "col-md-2 control-label" })
+                        <div class="col-md-4">
+                            @Html.TextBoxFor(m => m.DirForBackup, new { @class = "form-control", @readonly="readonly" })
+                            @Html.ValidationMessageFor(m => m.DirForBackup)
+                        </div>
+                        @Html.LabelFor(m => m.IsActive, new { @class = "col-md-2 control-label" })
+                        <div class="col-md-4">
+                            @Html.CheckBoxFor(m => m.IsActive)
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.BackupMethod, new { @class = "col-md-2 control-label" })
+                        <div class="col-md-4">
+                            @Html.RadioButtonFor(model => model.BackupMethod, "SaveInSeparateFiles")
+                            Save In Separate Files
+                            @Html.ValidationMessageFor(m => m.BackupMethod)
+                            <br />
+                            @Html.RadioButtonFor(model => model.BackupMethod, "SaveInOneFile")
+                            Save In One File
+                        </div>
+
+                        @Html.LabelFor(m => m.InsertMethod, new { @class = "col-md-2 control-label" })
+                        <div class="col-md-4">
+                            @Html.RadioButtonFor(model => model.InsertMethod, "InsertIgnore")
+                            Insert Ignore
+                            @Html.ValidationMessageFor(m => m.InsertMethod)
+                            <br />
+                            @Html.RadioButtonFor(model => model.InsertMethod, "ReplaceInsert")
+                            Replace Insert
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.SaveStructure, new { @class = "col-md-2 control-label" })
+                        <div class="col-md-4">
+                            @Html.CheckBoxFor(m => m.SaveStructure)
+                            @Html.ValidationMessageFor(m => m.SaveStructure)
+                        </div>
+
+                        @Html.LabelFor(m => m.CompressToZip, new { @class = "col-md-2 control-label" })
+                        <div class="col-md-4">
+                            @Html.CheckBoxFor(m => m.CompressToZip)
+                            @Html.ValidationMessageFor(m => m.CompressToZip)
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.DeleteOldBackups, new { @class = "col-md-2 control-label" })
+                        <div class="col-md-4">
+                            @Html.CheckBoxFor(m => m.DeleteOldBackups)
+                            @Html.ValidationMessageFor(m => m.DeleteOldBackups)
+                        </div>
+
+                        @Html.LabelFor(m => m.KeepXBackups, new { @class = "col-md-2 control-label" })
+                        <div class="col-md-4">
+                            @Html.TextBoxFor(m => m.KeepXBackups, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(m => m.KeepXBackups)
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.DbTableList, new { @class = "col-md-2 control-label" })
+                        <div class="col-md-4">
+                            @Html.TextAreaFor(m => m.DbTableList, new { @class = "form-control", @readonly = "readonly", @rows="5" })
+                            @Html.ValidationMessageFor(m => m.DbTableList)
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-10">
+                            <input type="submit" value="Update Job" class="btn btn-success" />
+                            <a href="~/DbJobs/Index" class="btn btn-default">Cancel</a>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    <script type="text/javascript">
+    $(document).ready(function () {
+        $("input[name='item.IsSelected']").on("click", function () {
+            var tmpDbTableList = [];
+            $.each($("input[name='item.IsSelected']:checked"), function () {
+                tmpDbTableList.push($(this).val());
+            });
+            $("#DbTableList").val(tmpDbTableList.join(", "));
+        });
+
+        $("#FullDbBackup").on("change", function () {
+            if ($("#FullDbBackup").is(":checked")) {
+                $("#divTableList").hide();
+                $.each($("input[name='item.IsSelected']:checked"), function () {
+                    $(this).removeAttr("checked");
+                    $("#DbTableList").val("");
+                });
+            }
+            else {
+                $("#divTableList").show();
+            }
+        });
+    });
+
+    var url = "../VerifyConnection";
+
+    $("#btnVerifyConnection").on("click", function () {
+        $("#loading").show();
+        $("#divConSuccess").hide();
+        $("#divConFailed").hide();
+        $("#btnVerifyConnection").addClass("disabled");
+        $.ajax({
+            type: "POST",
+            dataType: "json",
+            url: url,
+            data: {
+                "hdnDbServerName": $("#DbServerName").val(),
+                "DbName": $("#DbName").val(),
+                "hdnDbUserName": $("#DbUserName").val(),
+                "hdnDbPassword": $("#DbPassword").val()
+            },
+            success: function (data) {
+                $("#divConSuccess").show();
+                $("#divConFailed").hide();
+                $("#loading").hide();
+                $("#btnVerifyConnection").removeClass("disabled");
+            },
+            error: function (ex) {
+                $("#loading").hide();
+                $("#divConSuccess").hide();
+                $("#divConFailed").show();
+                $("#btnVerifyConnection").removeClass("disabled");
+            }
+        });
+    });
+    </script>
+}

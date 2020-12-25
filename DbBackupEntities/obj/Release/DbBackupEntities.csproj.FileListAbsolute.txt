@@ -1,0 +1,15 @@
+D:\Office Data\Applications\DatabaseBakup\DbBackupEntities\bin\Release\DbBackupEntities.dll
+D:\Office Data\Applications\DatabaseBakup\DbBackupEntities\bin\Release\DbBackupEntities.pdb
+D:\Office Data\Applications\DatabaseBakup\DbBackupEntities\obj\Release\DbBackupEntities.dll
+D:\Office Data\Applications\DatabaseBakup\DbBackupEntities\obj\Release\DbBackupEntities.pdb
+D:\Office Data\Applications\DatabaseBakup\DbBackupEntities\obj\Release\DbBackupEntities.csprojResolveAssemblyReference.cache
+D:\Office Data\Applications\DatabaseBackup\DbBackupEntities\bin\Release\DbBackupEntities.dll
+D:\Office Data\Applications\DatabaseBackup\DbBackupEntities\bin\Release\DbBackupEntities.pdb
+D:\Office Data\Applications\DatabaseBackup\DbBackupEntities\obj\Release\DbBackupEntities.csprojResolveAssemblyReference.cache
+D:\Office Data\Applications\DatabaseBackup\DbBackupEntities\obj\Release\DbBackupEntities.dll
+D:\Office Data\Applications\DatabaseBackup\DbBackupEntities\obj\Release\DbBackupEntities.pdb
+E:\Office Data\Applications\DatabaseBackup\DbBackupEntities\bin\Release\DbBackupEntities.dll
+E:\Office Data\Applications\DatabaseBackup\DbBackupEntities\bin\Release\DbBackupEntities.pdb
+E:\Office Data\Applications\DatabaseBackup\DbBackupEntities\obj\Release\DbBackupEntities.csproj.CoreCompileInputs.cache
+E:\Office Data\Applications\DatabaseBackup\DbBackupEntities\obj\Release\DbBackupEntities.dll
+E:\Office Data\Applications\DatabaseBackup\DbBackupEntities\obj\Release\DbBackupEntities.pdb

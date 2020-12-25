@@ -1,0 +1,59 @@
+﻿@model IEnumerable<DbBackupEntities.BackupFile>
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2></h2>
+
+@Html.ActionLink("<< Back", "Index", null, new { @class="btn btn-info" })
+<br /><br />
+
+<div class="panel panel-default">
+    <div class="panel-heading"><h4>Backup Files List</h4></div>
+    <div class="panel-body">
+        <table id="tblBackupFiles" class="table table-hover responsive">
+            <thead>
+                <tr>
+                    <th>
+                        File Name
+                    </th>
+                    <th>
+                        Size
+                    </th>
+                    <th>
+
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @item.FileName
+                        </td>
+                        <td>
+                            @item.Size
+                        </td>
+                        <td>
+                            @Html.ActionLink("Download", "DownloadFile", new { path = @item.DirInfo.FullName +"\\"+ @item.FileName })
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+@section Scripts {
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#tblBackupFiles").DataTable({
+                responsive: true,
+                searching: true,
+                paging: true,
+                ordering: false,
+                info: false
+            });
+        });
+    </script>
+}

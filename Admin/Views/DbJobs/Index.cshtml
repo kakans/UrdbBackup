@@ -1,0 +1,191 @@
+﻿@model IEnumerable<DbBackupEntities.DbJobDetail>
+@{
+    ViewBag.Title = "Index";
+    var identity = (System.Security.Claims.ClaimsIdentity)User.Identity;
+    var hasJobRunNow =  identity.HasClaim("DB_JOB_RUNNOW", "Y");
+    var hasJobEdit = identity.HasClaim("DB_JOB_EDIT", "Y");
+    var hasJobDelete = identity.HasClaim("DB_JOB_DELETE", "Y");
+}
+<br />
+<br />
+<br />
+<div class="panel panel-default">
+    <div class="panel-heading clearfix">
+        <h4 class="panel-title pull-left">
+            Job List</h4>
+        <div>
+            @Html.ActionLink("Create New Job", "Create", null, new { @class = "btn btn-default btn-primary pull-right" })
+        </div>
+    </div>
+    <div class="panel-body">
+        <table id="tblJobDetails" class="table table-hover responsive">
+            <thead>
+                <tr>
+                    @*<th>
+                        Job Id
+                    </th>*@
+                    <th>
+                        Job Name
+                    </th>
+                    <th class="none">
+                        Job Last Run
+                    </th>
+                    <th class="none">
+                        Backup Since (In Hrs.)
+                    </th>
+                    <th data-priority="4" class="none">
+                        Frequency (In Hrs.)
+                    </th>
+                    @*<th class="none">
+                        Dir For Backup
+                    </th>
+                    <th>
+                        BackupMethod
+                    </th>
+                    <th>
+                        InsertMethod
+                    </th>
+                    <th class="none">
+                        SaveStructure
+                    </th>
+                    <th class="none">
+                        CompressToZip
+                    </th>*@
+                    @*<th class="none">
+                        DeleteOldBackups
+                    </th>*@
+                    <th class="none">
+                        KeepXBackups
+                    </th>
+                    @*<th class="none">
+                        DbUserName
+                    </th>
+                    <th class="none">
+                        DbPassword
+                    </th>
+                    <th class="none">
+                        DbServer
+                    </th>
+                    <th class="none">
+                        DbName
+                    </th>
+                    <th class="none">
+                        FullDbBackup
+                    </th>
+                    <th class="none">
+                        DbTableList
+                    </th>
+                    <th>
+                        Status
+                    </th>*@
+                    @if (hasJobRunNow)
+                    { 
+                    <th>#</th>
+                    }
+                    @if(hasJobEdit || hasJobDelete){
+                    <th>&nbsp;</th>
+                    }
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+        {
+                <tr>
+                    @*<td>
+                        @item.JobId
+                    </td>*@
+                    <td>
+                        @item.JobTitle
+                    </td>
+                    <td>
+                        @item.LastRun
+                    </td>
+                    <td class="text-center">
+                        @item.BackupSince Hrs
+                    </td>
+                    <td class="text-center">
+                        @item.FrequencyInHrs Hrs
+                    </td>
+                    @*<td>
+                        @item.DirForBackup
+                    </td>
+                    <td>
+                        @item.BackupMethod
+                    </td>
+                    <td>
+                        @item.InsertMethod
+                    </td>
+                    <td>
+                        @item.SaveStructure
+                    </td>
+                    <td>
+                        @item.CompressToZip
+                    </td>*@
+                    @*<td>
+                        @item.DeleteOldBackups
+                    </td>*@
+                    <td class="text-center">
+                        @item.KeepXBackups
+                    </td>
+                    @*<td>
+                        @item.DbUserName
+                    </td>
+                    <td>
+                        ********
+                    </td>
+                    <td>
+                        @item.DbServerName
+                    </td>
+                    <td>
+                        @item.DbName
+                    </td>
+                    <td>
+                        @item.FullDbBackup
+                    </td>
+                    <td>
+                        @item.DbTableList
+                    </td>
+                    <td>
+                        @(item.IsActive == true ? "Active" : "InActive")
+                    </td>*@
+                    @if(hasJobRunNow) { 
+                    <td>
+                        @Html.ActionLink("Run Now", "RunNow", new { id = item.JobId })
+                    </td>
+                    }
+                    @if(hasJobEdit || hasJobDelete){
+                    <td>
+                        @if(hasJobEdit)
+                        {
+                            @Html.ActionLink("Edit", "Edit", new { id = item.JobId }) 
+                        }
+                        <span>&nbsp;&nbsp;</span>
+                        @if(hasJobDelete)
+                        {
+                            @Html.ActionLink("Delete", "Delete", new { id = item.JobId })
+                        }
+                    </td>
+                    }
+                </tr>
+        }
+            </tbody>
+        </table>
+    </div>
+</div>
+@section Scripts {
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#tblJobDetails").DataTable({
+                responsive: false,
+                columnDefs: [
+                    { responsivePriority: 1, targets: 0 },
+                    { responsivePriority: 2, targets: -2 }
+                ],
+                searching: false,
+                paging: false,
+                ordering: false,
+                info: false
+            });
+        });
+    </script>
+}

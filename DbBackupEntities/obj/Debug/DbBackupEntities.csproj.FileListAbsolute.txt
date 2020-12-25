@@ -1,0 +1,11 @@
+D:\Office Data\Applications\DatabaseBakup\DbBackupEntities\bin\Debug\DbBackupEntities.dll
+D:\Office Data\Applications\DatabaseBakup\DbBackupEntities\bin\Debug\DbBackupEntities.pdb
+D:\Office Data\Applications\DatabaseBakup\DbBackupEntities\obj\Debug\DbBackupEntities.csprojResolveAssemblyReference.cache
+D:\Office Data\Applications\DatabaseBakup\DbBackupEntities\obj\Debug\DbBackupEntities.dll
+D:\Office Data\Applications\DatabaseBakup\DbBackupEntities\obj\Debug\DbBackupEntities.pdb
+E:\Office Data\Applications\DatabaseBackup\DbBackupEntities\bin\Debug\DbBackupEntities.dll
+E:\Office Data\Applications\DatabaseBackup\DbBackupEntities\bin\Debug\DbBackupEntities.pdb
+E:\Office Data\Applications\DatabaseBackup\DbBackupEntities\obj\Debug\DbBackupEntities.csprojAssemblyReference.cache
+E:\Office Data\Applications\DatabaseBackup\DbBackupEntities\obj\Debug\DbBackupEntities.csproj.CoreCompileInputs.cache
+E:\Office Data\Applications\DatabaseBackup\DbBackupEntities\obj\Debug\DbBackupEntities.dll
+E:\Office Data\Applications\DatabaseBackup\DbBackupEntities\obj\Debug\DbBackupEntities.pdb

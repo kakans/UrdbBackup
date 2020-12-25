@@ -1,0 +1,44 @@
+﻿@model List<DbBackupEntities.CheckBoxModel>
+@{
+    ViewBag.Title = "Permission";
+}
+
+<br />
+<br />
+<div class="panel panel-default">
+    <div class="panel-heading clearfix">
+        <h4 class="panel-title pull-left"><b>User Permission</b></h4>
+    </div>
+    <div class="panel-body">
+        @using (Html.BeginForm("Permission", "UserGroups", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+        {
+            @Html.AntiForgeryToken()
+            <div>
+                <p>Set User Permission for <b> @ViewBag.GroupName </b>group.</p>
+            </div>
+           
+            for(var i = 0; i < Model.Count(); i++)  
+               {  
+               <table>  
+                  <tr>  
+                     <td>  
+                        @Html.CheckBoxFor(it => it[i].IsChecked, new { Style = "vertical-align:3px}" })  
+                     </td>  
+                      <td>
+                          @Html.HiddenFor(it => it[i].Value)
+                          @Html.DisplayFor(it => it[i].Text)
+                      </td>
+                  </tr>  
+               </table>  
+  
+               }  
+   
+            <br />
+            <div>
+                <input type="submit" value="Submit" class="btn btn-success" /> &nbsp;&nbsp;
+                @Html.ActionLink("Cancel", "Index", null, new { @class = "btn btn-danger" })
+            </div>
+        }
+    </div>
+</div>
+

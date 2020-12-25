@@ -1,0 +1,86 @@
+﻿@model IEnumerable<DbBackupEntities.UserEntity>
+@{
+    ViewBag.Title = "Index";
+}
+
+<br />
+<br/>
+<div class="panel panel-default">
+    <div class="panel-heading clearfix">
+        <h4 class="panel-title pull-left"><b>Manage Users</b></h4>
+        <div>
+            @Html.ActionLink("Add User", "AddUser", null, new { @class = "btn btn-default btn-primary pull-right" })
+        </div>
+    </div>
+    <div class="panel-body">
+        <table id="tblUsers" class="table table-hover responsive">
+            <thead>
+                <tr>
+                    <th>
+                        First Name
+                    </th>
+                    <th>
+                        Last Name
+                    </th>
+                    <th>
+                        User Name
+                    </th>
+                    <th>
+                        Password
+                    </th>
+                    <th>
+                        Group Name
+                    </th>
+                    <th>
+                        Status
+                    </th>
+                    <th>
+                        &nbsp;
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @item.FirstName
+                        </td>
+                        <td>
+                            @item.LastName
+                        </td>
+                        <td>
+                            @item.UserName
+                        </td>
+                        <td>
+                            ***********
+                        </td>
+                        <td>
+                            @item.Group.GroupName
+                        </td>
+                        <td>
+                            @(item.Active == true ? "Active":"InActive")
+                        </td>
+                        <td>
+                            @Html.ActionLink("Edit", "Edit", new { id = @item.UserId })
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+@section Scripts {
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#tblUsers").DataTable({
+                responsive: true,
+                searching: true,
+                paging: true,
+                ordering: false,
+                info: false
+            });
+        });
+    </script>
+}

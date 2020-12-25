@@ -1,0 +1,58 @@
+﻿@model IEnumerable<DbBackupEntities.Folder>
+@{
+    ViewBag.Title = "Index";
+    var identity = (System.Security.Claims.ClaimsIdentity)User.Identity;
+    var hasBackupDelete = identity.HasClaim("DB_BACKUP_DELETE", "Y");
+}
+
+<br /><br />
+<div class="panel panel-default">
+    <div class="panel-heading"><h4>Backup Details</h4></div>
+    <div class="panel-body">
+        <table id="tblDbBackupList" class="table table-hover responsive">
+            <thead>
+                <tr>
+                    <th>
+                        Job Name
+                    </th>
+                    <th>Last File Backup</th>
+                    <th>&nbsp;</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                <tr>
+                    <td>
+                        @item.Name
+                    </td>
+                    <td>
+                        @item.DirInfo.LastWriteTime
+                    </td>
+                    <td>
+                        @Html.ActionLink("Details", "FolderList", new { id = item.Name }) 
+                        @if (hasBackupDelete)
+                        {
+                            <span>&nbsp;&nbsp; | &nbsp;&nbsp;</span>
+                            @Html.ActionLink("Delete", "DeleteBackup", new { id= item.Name})
+                        }
+                    </td>
+                </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+@section Scripts {
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#tblDbBackupList").DataTable({
+                responsive: true,
+                searching: true,
+                paging: true,
+                ordering: false,
+                info: false
+            });
+        });
+    </script>
+}

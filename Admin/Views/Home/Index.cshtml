@@ -1,0 +1,110 @@
+﻿@model IEnumerable<DbBackupEntities.DBJobListModel>
+
+@{
+    ViewBag.Title = "Home Page";
+}
+<br />
+<br />
+<div class="panel panel-default">
+    <div class="panel-heading clearfix">
+        <h4 class="panel-title pull-left">
+            Running Jobs
+        </h4>
+    </div>
+    <div class="panel-body">
+        <table id="tblJobRunning" class="table table-hover responsive">
+            <thead>
+                <tr>
+                    <th>
+                        Job Name
+                    </th>
+                    <th>
+                        Database Name
+                    </th>
+                    <th class="none">
+                        Status
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.Where(x => x.Status.Equals("Running")).Select(x => x))
+                {
+                    <tr class="success">
+                        <td>@item.JobTitle</td>
+                        <td>@item.DbName</td>
+                        <td>@item.Status</td>
+                    </tr>
+                }
+
+            </tbody>
+        </table>
+    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading clearfix">
+        <h4 class="panel-title pull-left">
+            Queued Jobs
+        </h4>
+    </div>
+    <div class="panel-body">
+        <table id="tblJobQueued" class="table table-hover responsive">
+            <thead>
+                <tr>
+                    <th>
+                        Job Name
+                    </th>
+                    <th>
+                        Database Name
+                    </th>
+                    <th class="none">
+                        Run In (hr:mm)
+                    </th>
+                    <th>
+                        IsActive
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.Where(x => x.Status != "Running").Select(x => x))
+                {
+                    <tr>
+                        <td>
+                            @item.JobTitle
+                        </td>
+                        <td>
+                            @item.DbName
+                        </td>
+                        <td>
+                            @item.RunIn
+                        </td>
+                        <td>
+                            @(item.IsActive == true ? "Active" : "InActive")
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+@section Scripts {
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#tblJobRunning").DataTable({
+                responsive: false,
+                searching: false,
+                paging: false,
+                ordering: false,
+                info: false
+            });
+            $("#tblJobQueued").DataTable({
+                responsive: false,
+                searching: false,
+                paging: false,
+                ordering: false,
+                info: false
+            });
+        });
+    </script>
+}

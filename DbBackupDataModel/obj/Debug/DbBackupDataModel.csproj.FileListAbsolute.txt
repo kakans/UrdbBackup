@@ -1,0 +1,16 @@
+D:\Office Data\Applications\DatabaseBakup\DbBackupDataModel\bin\Debug\DbBackupDataModel.dll
+D:\Office Data\Applications\DatabaseBakup\DbBackupDataModel\bin\Debug\DbBackupDataModel.pdb
+D:\Office Data\Applications\DatabaseBakup\DbBackupDataModel\bin\Debug\DbBackupEntities.dll
+D:\Office Data\Applications\DatabaseBakup\DbBackupDataModel\bin\Debug\DbBackupEntities.pdb
+D:\Office Data\Applications\DatabaseBakup\DbBackupDataModel\obj\Debug\DbBackupDataModel.csprojResolveAssemblyReference.cache
+D:\Office Data\Applications\DatabaseBakup\DbBackupDataModel\obj\Debug\DbBackupDataModel.dll
+D:\Office Data\Applications\DatabaseBakup\DbBackupDataModel\obj\Debug\DbBackupDataModel.pdb
+E:\Office Data\Applications\DatabaseBackup\DbBackupDataModel\bin\Debug\DbBackupDataModel.dll
+E:\Office Data\Applications\DatabaseBackup\DbBackupDataModel\bin\Debug\DbBackupDataModel.pdb
+E:\Office Data\Applications\DatabaseBackup\DbBackupDataModel\bin\Debug\DbBackupEntities.dll
+E:\Office Data\Applications\DatabaseBackup\DbBackupDataModel\bin\Debug\DbBackupEntities.pdb
+E:\Office Data\Applications\DatabaseBackup\DbBackupDataModel\obj\Debug\DbBackupDataModel.csprojAssemblyReference.cache
+E:\Office Data\Applications\DatabaseBackup\DbBackupDataModel\obj\Debug\DbBackupDataModel.csproj.CoreCompileInputs.cache
+E:\Office Data\Applications\DatabaseBackup\DbBackupDataModel\obj\Debug\DbBackupDataModel.csproj.CopyComplete
+E:\Office Data\Applications\DatabaseBackup\DbBackupDataModel\obj\Debug\DbBackupDataModel.dll
+E:\Office Data\Applications\DatabaseBackup\DbBackupDataModel\obj\Debug\DbBackupDataModel.pdb

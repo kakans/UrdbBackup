@@ -1,0 +1,51 @@
+﻿@model IEnumerable<DbBackupEntities.DbLogDetails>
+@{
+    ViewBag.Title = "Details";
+}
+<br />
+@Html.ActionLink("<< Back", "Index", null, new { @class = "btn btn-info" })
+<br/>
+<br/>
+<div class="panel panel-default">
+    <div class="panel-heading"><h4>Logs Details</h4></div>
+    <div class="panel-body">
+        <table id="tblJobLogsDetails" class="table table-hover responsive">
+            <thead>
+                <tr>
+                    <th>
+                        Level
+                    </th>
+                    <th>
+                        Log Time
+                    </th>
+                    <th>
+                        Message
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.LogLevel</td>
+                        <td>@item.LogTime</td>
+                        <td>@item.Message</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+@section Scripts {
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#tblJobLogsDetails").DataTable({
+                responsive: true,
+                searching: false,
+                paging: false,
+                ordering: false,
+                info: false
+            });
+        });
+    </script>
+}

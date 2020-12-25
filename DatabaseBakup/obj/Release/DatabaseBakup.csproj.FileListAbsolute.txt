@@ -1,0 +1,13 @@
+D:\Office Data\Applications\DatabaseBakup\DatabaseBakup\bin\Release\DatabaseBakup.exe.config
+D:\Office Data\Applications\DatabaseBakup\DatabaseBakup\bin\Release\DatabaseBakup.exe
+D:\Office Data\Applications\DatabaseBakup\DatabaseBakup\bin\Release\DatabaseBakup.pdb
+D:\Office Data\Applications\DatabaseBakup\DatabaseBakup\bin\Release\DatabaseBackUpService.dll
+D:\Office Data\Applications\DatabaseBakup\DatabaseBakup\bin\Release\DbBackupEntities.dll
+D:\Office Data\Applications\DatabaseBakup\DatabaseBakup\bin\Release\MySql.Data.dll
+D:\Office Data\Applications\DatabaseBakup\DatabaseBakup\bin\Release\DbBackupDataModel.dll
+D:\Office Data\Applications\DatabaseBakup\DatabaseBakup\bin\Release\DatabaseBackUpService.pdb
+D:\Office Data\Applications\DatabaseBakup\DatabaseBakup\bin\Release\DbBackupEntities.pdb
+D:\Office Data\Applications\DatabaseBakup\DatabaseBakup\bin\Release\DbBackupDataModel.pdb
+D:\Office Data\Applications\DatabaseBakup\DatabaseBakup\obj\Release\DatabaseBakup.csprojResolveAssemblyReference.cache
+D:\Office Data\Applications\DatabaseBakup\DatabaseBakup\obj\Release\DatabaseBakup.exe
+D:\Office Data\Applications\DatabaseBakup\DatabaseBakup\obj\Release\DatabaseBakup.pdb
