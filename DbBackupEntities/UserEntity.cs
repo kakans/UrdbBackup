@@ -36,6 +36,8 @@ namespace DbBackupEntities
         public int UserId { get; set; }
         
         public bool Active { get; set; }
+
+        public List<CheckBoxModel> Jobs { get; set; }
     }
 
     

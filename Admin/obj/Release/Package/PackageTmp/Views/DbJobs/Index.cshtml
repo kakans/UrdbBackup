@@ -148,11 +148,20 @@
                     <td>
                         @(item.IsActive == true ? "Active" : "InActive")
                     </td>*@
-                    @if(hasJobRunNow) { 
+                    @if(hasJobRunNow) {
+                        if ((!string.IsNullOrWhiteSpace(item.JobStatus)) && item.JobStatus == "Queued")
+                        {
                     <td>
-                        @Html.ActionLink("Run Now", "RunNow", new { id = item.JobId })
+                        @Html.ActionLink("Queued", "Index","Home",null, new { id = item.JobId })
                     </td>
-                    }
+                        }
+                        else
+                        {
+                            <td>
+                                @Html.ActionLink("Run Now", "RunNow", new { id = item.JobId })
+                            </td>
+                        }
+                     }
                     @if(hasJobEdit || hasJobDelete){
                     <td>
                         @if(hasJobEdit)

@@ -76,6 +76,8 @@ namespace DbBackupEntities
         [Display(Name="Full Database Backup")]
         public bool FullDbBackup { get; set; }
         public List<TableList> TableList { get; set; }
+
+        public string JobStatus { get; set; }
     }
     public class TableList
     {

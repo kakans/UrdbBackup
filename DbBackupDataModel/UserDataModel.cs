@@ -177,6 +177,55 @@ namespace DbBackupDataModel
 
             db.ExecuteNonQuery(sql, CommandType.Text, param);
 
+            if(model.Jobs.Count > 0)
+            {
+                int cnt = 0;
+                var jobIds = model.Jobs.Where(x => x.IsChecked == true);
+                //Code need to refactor for performace
+
+                //disable old values
+
+                string sqlUpdate = "UPDATE UserJob SET IsActive= 0 Where UserId =@UserId";
+                MySql.Data.MySqlClient.MySqlParameter[] paramupdate = new MySql.Data.MySqlClient.MySqlParameter[1];
+                paramupdate[0] = new MySql.Data.MySqlClient.MySqlParameter { ParameterName = "UserId", DbType = DbType.String, Value = id };
+                db.ExecuteNonQuery(sqlUpdate, CommandType.Text, paramupdate);
+
+                string sqlInsert = "INSERT INTO UserJob(UserId,UserJobId,IsActive) Values";
+                foreach (var job in jobIds)
+                {
+                    if (cnt == 0)
+                    {
+                        sqlInsert += $"({id},{job.Value},1)";
+                    }
+                    else
+                    {
+                        sqlInsert += $",({id},{job.Value},1)";
+                    }
+                    cnt++;
+                }
+                db.ExecuteNonQuery(sqlInsert, CommandType.Text);
+            }
+
+        }
+        public List<int> GetAssignedJobList(int id)
+        {
+            List<int> jobs = new List<int>();
+            MySqlDatabase db = new MySqlDatabase();
+            DataSet ds = new DataSet();
+
+            string sql = string.Format(@"SELECT UserJobId
+                                        FROM UserJob
+                                        WHERE IsActive=1 and UserId=@userId");
+
+            MySql.Data.MySqlClient.MySqlParameter[] param = new MySql.Data.MySqlClient.MySqlParameter[1];
+            param[0] = new MySql.Data.MySqlClient.MySqlParameter { ParameterName = "userId", DbType = DbType.Int16, Value = id };
+
+            ds = db.GetDataSet(sql, CommandType.Text, param);
+            for (int j = 0; j < ds.Tables[0].Rows.Count; j++)
+            {
+                jobs.Add(Convert.ToInt32(ds.Tables[0].Rows[j]["UserJobId"]));
+            }
+            return jobs;
         }
     }
 }

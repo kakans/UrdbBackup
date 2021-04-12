@@ -34,7 +34,7 @@
                         @if (hasBackupDelete)
                         {
                             <span>&nbsp;&nbsp; | &nbsp;&nbsp;</span>
-                            @Html.ActionLink("Delete", "DeleteBackup", new { id= item.Name})
+                            @Html.ActionLink("Delete", "DeleteBackup", "DbBackupFile", null,new { onclick = "return DeleteBackup('"+item.Name+"')"})
                         }
                     </td>
                 </tr>
@@ -45,6 +45,14 @@
 </div>
 @section Scripts {
     <script type="text/javascript">
+        function DeleteBackup(name) {
+            if (confirm("Are you sure you want to delete \"" + name + "\"?")) {
+                return true;
+            }
+            else {
+                return false;
+            }
+        }
         $(document).ready(function () {
             $("#tblDbBackupList").DataTable({
                 responsive: true,

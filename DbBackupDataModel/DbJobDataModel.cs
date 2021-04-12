@@ -21,12 +21,13 @@ namespace DbBackupDataModel
             string sql = string.Format(@"SELECT id,JobName,FrequencyInHrs,LastRun,NextRun,DirForBackUp,
                                         BackupMethod,InsertMethod,SaveStructure,CompressToZip,DeleteOldBackups,
                                         KeepXBackups,DbUserName,DbPassword,DbServer,DbName,DbTableList,IsActive,
-                                        FullDbBackup, TIMESTAMPDIFF(HOUR, LastRun, NOW()) AS BackupSince 
+                                        FullDbBackup, TIMESTAMPDIFF(HOUR, LastRun, NOW()) AS BackupSince,Status 
                                         FROM DbJobDetails");
             if (active == 1)
             {
                 sql = sql + " where isactive = 1 and NextRun < now() ";
             }
+            sql = sql + " ORDER BY JobName";
             ds = db.GetDataSet(sql, CommandType.Text);
             for (int j = 0; j < ds.Tables[0].Rows.Count; j++)
             {
@@ -51,7 +52,8 @@ namespace DbBackupDataModel
                     DbTableList = Convert.ToString(ds.Tables[0].Rows[j]["dbtablelist"]),
                     IsActive = Convert.ToBoolean(ds.Tables[0].Rows[j]["isactive"]),
                     FullDbBackup = Convert.ToBoolean(ds.Tables[0].Rows[j]["FullDbBackup"]),
-                    BackupSince = Convert.ToInt32(ds.Tables[0].Rows[j]["BackupSince"])
+                    BackupSince = Convert.ToInt32(ds.Tables[0].Rows[j]["BackupSince"]),
+                    JobStatus = Convert.ToString(ds.Tables[0].Rows[j]["Status"])
                 });
             }
             return jobs;
@@ -93,6 +95,27 @@ namespace DbBackupDataModel
                 model.dbBackupConfig = dbBackupConfig;
             }
             return model;
+        }
+
+        public List<int> GetAssignedJobList(int id)
+        {
+            List<int> jobs = new List<int>();
+            MySqlDatabase db = new MySqlDatabase();
+            DataSet ds = new DataSet();
+
+            string sql = string.Format(@"SELECT UserJobId
+                                        FROM UserJob
+                                        WHERE IsActive=1 and UserId=@userId");
+
+            MySql.Data.MySqlClient.MySqlParameter[] param = new MySql.Data.MySqlClient.MySqlParameter[1];
+            param[0] = new MySql.Data.MySqlClient.MySqlParameter { ParameterName = "userId", DbType = DbType.Int16, Value = id };
+
+            ds = db.GetDataSet(sql, CommandType.Text,param);
+            for (int j = 0; j < ds.Tables[0].Rows.Count; j++)
+            {
+                jobs.Add(Convert.ToInt32(ds.Tables[0].Rows[j]["UserJobId"]));
+            }
+            return jobs;
         }
 
         public List<DBJobListModel> GetJobList()
@@ -497,7 +520,7 @@ namespace DbBackupDataModel
             MySqlDatabase db = new MySqlDatabase();
             DataSet ds = new DataSet();
 
-            string sqlQuery = string.Format("UPDATE DbJobDetails set NextRun=now() where id =@id");
+            string sqlQuery = string.Format("UPDATE DbJobDetails set NextRun=now(), Status ='Queued' where id =@id");
 
             MySql.Data.MySqlClient.MySqlParameter[] param = new MySql.Data.MySqlClient.MySqlParameter[1];
             param[0] = new MySql.Data.MySqlClient.MySqlParameter { ParameterName = "Id", DbType = DbType.Int32, Value = id };
