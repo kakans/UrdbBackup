@@ -20,3 +20,15 @@ E:\Office Data\Applications\DatabaseBackup\DatabaseBackUpService\obj\Debug\DbBac
 E:\Office Data\Applications\DatabaseBackup\DatabaseBackUpService\obj\Debug\DbBackUpService.csproj.CopyComplete
 E:\Office Data\Applications\DatabaseBackup\DatabaseBackUpService\obj\Debug\DatabaseBackUpService.dll
 E:\Office Data\Applications\DatabaseBackup\DatabaseBackUpService\obj\Debug\DatabaseBackUpService.pdb
+E:\Office Data\Applications\UrDbBackup\DatabaseBackUpService\bin\Debug\DatabaseBackUpService.dll
+E:\Office Data\Applications\UrDbBackup\DatabaseBackUpService\bin\Debug\DatabaseBackUpService.pdb
+E:\Office Data\Applications\UrDbBackup\DatabaseBackUpService\bin\Debug\DbBackupDataModel.dll
+E:\Office Data\Applications\UrDbBackup\DatabaseBackUpService\bin\Debug\DbBackupEntities.dll
+E:\Office Data\Applications\UrDbBackup\DatabaseBackUpService\bin\Debug\MySql.Data.dll
+E:\Office Data\Applications\UrDbBackup\DatabaseBackUpService\bin\Debug\DbBackupDataModel.pdb
+E:\Office Data\Applications\UrDbBackup\DatabaseBackUpService\bin\Debug\DbBackupEntities.pdb
+E:\Office Data\Applications\UrDbBackup\DatabaseBackUpService\obj\Debug\DbBackUpService.csprojAssemblyReference.cache
+E:\Office Data\Applications\UrDbBackup\DatabaseBackUpService\obj\Debug\DbBackUpService.csproj.CoreCompileInputs.cache
+E:\Office Data\Applications\UrDbBackup\DatabaseBackUpService\obj\Debug\DbBackUpService.csproj.CopyComplete
+E:\Office Data\Applications\UrDbBackup\DatabaseBackUpService\obj\Debug\DatabaseBackUpService.dll
+E:\Office Data\Applications\UrDbBackup\DatabaseBackUpService\obj\Debug\DatabaseBackUpService.pdb

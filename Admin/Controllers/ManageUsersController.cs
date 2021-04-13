@@ -1,6 +1,7 @@
 ﻿using Admin.Models;
 using DatabaseBackUpService;
 using DbBackupEntities;
+using DbBackUpService;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -49,8 +50,28 @@ namespace Admin.Controllers
             UserEntity model = new UserEntity();
             UserService userService = new UserService();
             model = userService.GetUser(id);
+
+            DbJobService jobs = new DbJobService();
+
+            var activeJob = jobs.GetJobDetails(active: 0);
+
+            var assignedJob = jobs.GetAssignedJobList(id);
+                
+
+            List<CheckBoxModel> ChkItem = new List<CheckBoxModel>();
+            foreach (var item in activeJob)
+            {
+                ChkItem.Add(new CheckBoxModel
+                {
+                    Value = item.JobId,
+                    Text = item.JobTitle,
+                    IsChecked = (assignedJob.Contains(item.JobId)) ? true : false
+                });
+            }
+         
             var lstGroups = userService.GetUserGroups();
             model.GroupItems = lstGroups;
+            model.Jobs = ChkItem;
             return View(model);
         }
 

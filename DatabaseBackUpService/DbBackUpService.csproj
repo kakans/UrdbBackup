@@ -41,6 +41,7 @@
   <ItemGroup>
     <Compile Include="BackupFileService.cs" />
     <Compile Include="DbJobService.cs" />
+    <Compile Include="EmailSender.cs" />
     <Compile Include="GroupService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="PermissionService.cs" />

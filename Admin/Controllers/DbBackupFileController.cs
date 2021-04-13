@@ -14,6 +14,10 @@ namespace Admin.Controllers
     public class DbBackupFileController : Controller
     {
         string backupPath = ConfigurationSettings.GetApplicationSetting("BackUpPath");
+        string emailTo = ConfigurationSettings.GetApplicationSetting("Notification_Email_TO");
+        string emailCC = ConfigurationSettings.GetApplicationSetting("Notification_Email_CC");
+        string emailBcc = ConfigurationSettings.GetApplicationSetting("Notification_Email_BCC");
+
         //
         // GET: /DbBackupFile/
         [ClaimsAuthorize(PermissionName.DB_BACKUP_VIEW, PermissionName.CLAIM_Y)]
@@ -45,15 +49,15 @@ namespace Admin.Controllers
                 try
                 {
                     Directory.Delete(string.Format("{0}\\{1}", backupPath, id), true);
+                    EmailSender email = new EmailSender();
+                    email.sendEmail(emailTo, emailCC, emailBcc, false, "Database Backup Deleted", "Database Backup Deleted for "+ string.Format("{0}\\{1}", backupPath, id));
                 }
                 catch (Exception)
                 {
-                    
                     throw;
                 }
             }
             return RedirectToAction("Index");
-
         }
 
         [ClaimsAuthorize(PermissionName.DB_BACKUP_DETAILS, PermissionName.CLAIM_Y)]

@@ -13,3 +13,9 @@ E:\Office Data\Applications\DatabaseBackup\DbBackupEntities\bin\Release\DbBackup
 E:\Office Data\Applications\DatabaseBackup\DbBackupEntities\obj\Release\DbBackupEntities.csproj.CoreCompileInputs.cache
 E:\Office Data\Applications\DatabaseBackup\DbBackupEntities\obj\Release\DbBackupEntities.dll
 E:\Office Data\Applications\DatabaseBackup\DbBackupEntities\obj\Release\DbBackupEntities.pdb
+E:\Office Data\Applications\UrDbBackup\DbBackupEntities\bin\Release\DbBackupEntities.dll
+E:\Office Data\Applications\UrDbBackup\DbBackupEntities\bin\Release\DbBackupEntities.pdb
+E:\Office Data\Applications\UrDbBackup\DbBackupEntities\obj\Release\DbBackupEntities.csproj.CoreCompileInputs.cache
+E:\Office Data\Applications\UrDbBackup\DbBackupEntities\obj\Release\DbBackupEntities.dll
+E:\Office Data\Applications\UrDbBackup\DbBackupEntities\obj\Release\DbBackupEntities.pdb
+E:\Office Data\Applications\UrDbBackup\DbBackupEntities\obj\Release\DbBackupEntities.csprojAssemblyReference.cache

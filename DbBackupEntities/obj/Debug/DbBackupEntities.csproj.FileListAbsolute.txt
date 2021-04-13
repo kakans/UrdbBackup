@@ -9,3 +9,8 @@ E:\Office Data\Applications\DatabaseBackup\DbBackupEntities\obj\Debug\DbBackupEn
 E:\Office Data\Applications\DatabaseBackup\DbBackupEntities\obj\Debug\DbBackupEntities.csproj.CoreCompileInputs.cache
 E:\Office Data\Applications\DatabaseBackup\DbBackupEntities\obj\Debug\DbBackupEntities.dll
 E:\Office Data\Applications\DatabaseBackup\DbBackupEntities\obj\Debug\DbBackupEntities.pdb
+E:\Office Data\Applications\UrDbBackup\DbBackupEntities\bin\Debug\DbBackupEntities.dll
+E:\Office Data\Applications\UrDbBackup\DbBackupEntities\bin\Debug\DbBackupEntities.pdb
+E:\Office Data\Applications\UrDbBackup\DbBackupEntities\obj\Debug\DbBackupEntities.csproj.CoreCompileInputs.cache
+E:\Office Data\Applications\UrDbBackup\DbBackupEntities\obj\Debug\DbBackupEntities.dll
+E:\Office Data\Applications\UrDbBackup\DbBackupEntities\obj\Debug\DbBackupEntities.pdb

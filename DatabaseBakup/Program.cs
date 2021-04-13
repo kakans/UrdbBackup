@@ -9,18 +9,35 @@ using System.IO;
 using System.Diagnostics;
 using System.Configuration;
 using System.Threading;
+using DatabaseBackUpService;
 
 namespace DatabaseBakup
 {
     class Program
     {
         public static Queue<string> DumpRequestsQueue = new Queue<string>();
+        
+
         static void Main(string[] args)
         {
+            string emailTo = ConfigurationManager.AppSettings["Notification_Email_TO"].ToString();
+            string emailCC = ConfigurationManager.AppSettings["Notification_Email_CC"].ToString();
+            string emailBcc = ConfigurationManager.AppSettings["Notification_Email_BCC"].ToString();
+
             while (true)
             {
-                ExecuteJob();
-                Thread.Sleep(1*60*1000);
+                try
+                {
+                    ExecuteJob();
+                    Thread.Sleep(1 * 60 * 1000);
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex);
+                    EmailSender email = new EmailSender();
+                    email.sendEmail(emailTo, emailCC, emailBcc, false, "Exception", ex.InnerException.ToString());
+                }
+                
             }
         }
         public static void ExecuteJob()
@@ -230,7 +247,7 @@ namespace DatabaseBakup
             Console.WriteLine("* SNK Database Backup Job Completed *");
             Console.WriteLine("Now Ideal State");
         }
-
+      
         private static void CreateAndExecuteDbBackupBatchFile(string command)
         {
             Console.WriteLine("Full Backup started");

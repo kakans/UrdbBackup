@@ -121,5 +121,10 @@ namespace DbBackUpService
             DbJobDataModel dataModel = new DbJobDataModel();
             return dataModel.GetJobList();
         }
+        public List<int> GetAssignedJobList(int id)
+        {
+            DbJobDataModel dataModel = new DbJobDataModel();
+            return dataModel.GetAssignedJobList(id);
+        }
     }
 }

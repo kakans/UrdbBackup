@@ -24,3 +24,13 @@ E:\Office Data\Applications\DatabaseBackup\DbBackupDataModel\obj\Release\DbBacku
 E:\Office Data\Applications\DatabaseBackup\DbBackupDataModel\obj\Release\DbBackupDataModel.csproj.CopyComplete
 E:\Office Data\Applications\DatabaseBackup\DbBackupDataModel\obj\Release\DbBackupDataModel.dll
 E:\Office Data\Applications\DatabaseBackup\DbBackupDataModel\obj\Release\DbBackupDataModel.pdb
+E:\Office Data\Applications\UrDbBackup\DbBackupDataModel\bin\Release\DbBackupDataModel.dll
+E:\Office Data\Applications\UrDbBackup\DbBackupDataModel\bin\Release\DbBackupDataModel.pdb
+E:\Office Data\Applications\UrDbBackup\DbBackupDataModel\bin\Release\DbBackupEntities.dll
+E:\Office Data\Applications\UrDbBackup\DbBackupDataModel\bin\Release\MySql.Data.dll
+E:\Office Data\Applications\UrDbBackup\DbBackupDataModel\bin\Release\DbBackupEntities.pdb
+E:\Office Data\Applications\UrDbBackup\DbBackupDataModel\obj\Release\DbBackupDataModel.csprojAssemblyReference.cache
+E:\Office Data\Applications\UrDbBackup\DbBackupDataModel\obj\Release\DbBackupDataModel.csproj.CoreCompileInputs.cache
+E:\Office Data\Applications\UrDbBackup\DbBackupDataModel\obj\Release\DbBackupDataModel.csproj.CopyComplete
+E:\Office Data\Applications\UrDbBackup\DbBackupDataModel\obj\Release\DbBackupDataModel.dll
+E:\Office Data\Applications\UrDbBackup\DbBackupDataModel\obj\Release\DbBackupDataModel.pdb

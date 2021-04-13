@@ -14,3 +14,12 @@ E:\Office Data\Applications\DatabaseBackup\DbBackupDataModel\obj\Debug\DbBackupD
 E:\Office Data\Applications\DatabaseBackup\DbBackupDataModel\obj\Debug\DbBackupDataModel.csproj.CopyComplete
 E:\Office Data\Applications\DatabaseBackup\DbBackupDataModel\obj\Debug\DbBackupDataModel.dll
 E:\Office Data\Applications\DatabaseBackup\DbBackupDataModel\obj\Debug\DbBackupDataModel.pdb
+E:\Office Data\Applications\UrDbBackup\DbBackupDataModel\bin\Debug\DbBackupDataModel.dll
+E:\Office Data\Applications\UrDbBackup\DbBackupDataModel\bin\Debug\DbBackupDataModel.pdb
+E:\Office Data\Applications\UrDbBackup\DbBackupDataModel\bin\Debug\DbBackupEntities.dll
+E:\Office Data\Applications\UrDbBackup\DbBackupDataModel\bin\Debug\DbBackupEntities.pdb
+E:\Office Data\Applications\UrDbBackup\DbBackupDataModel\obj\Debug\DbBackupDataModel.csprojAssemblyReference.cache
+E:\Office Data\Applications\UrDbBackup\DbBackupDataModel\obj\Debug\DbBackupDataModel.csproj.CoreCompileInputs.cache
+E:\Office Data\Applications\UrDbBackup\DbBackupDataModel\obj\Debug\DbBackupDataModel.csproj.CopyComplete
+E:\Office Data\Applications\UrDbBackup\DbBackupDataModel\obj\Debug\DbBackupDataModel.dll
+E:\Office Data\Applications\UrDbBackup\DbBackupDataModel\obj\Debug\DbBackupDataModel.pdb

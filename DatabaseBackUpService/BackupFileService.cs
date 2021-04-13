@@ -32,7 +32,7 @@ namespace DatabaseBackUpService
                     Size = FormatSize(size)
                 });
             }
-            return folders.OrderByDescending(x => x.DirInfo.LastWriteTime).ToList();
+            return folders.OrderBy(x => x.DirInfo.Name).ToList();
         }
         public List<BackupFile> GetBackupFile(string path)
         {
